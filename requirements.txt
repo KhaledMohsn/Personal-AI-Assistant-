@@ -1,0 +1,10 @@
+# AI
+groq
+# Voice
+SpeechRecognition
+# Environment
+python-dotenv
+# GUI
+customtkinter
+# Text to Speech
+edge-tts pygame
