@@ -1,4 +1,7 @@
 import subprocess
+from config.logger import get_logger
+
+logger = get_logger(__name__)
 
 APPS = {
 
@@ -17,6 +20,9 @@ class OpenAppAction:
         self.listener = listener
 
     def open_app(self, app_name: str):
+
+        logger.info(f"Attempting to open: {app_name}")
+
         app_name = app_name.lower().strip()
 
         if app_name not in APPS:
@@ -24,7 +30,10 @@ class OpenAppAction:
             return
 
         try:
+            logger.info(f"Opened: {app_name}")
             subprocess.Popen(APPS[app_name], shell=True)
             self.speaker.say(f"Opening {app_name}")
+            
         except Exception:
+            logger.error(f"Failed to open: {app_name}")
             self.speaker.say(f"I couldn't open {app_name}")

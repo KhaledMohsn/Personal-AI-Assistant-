@@ -1,8 +1,11 @@
 import speech_recognition as sr
 import os
 
+from config.logger import get_logger
+logger = get_logger(__name__)
+
 LOCATIONS = {
-    "desktop": os.path.normpath(os.path.expanduser("~/Desktop")),
+    "desktop": os.path.normpath(os.path.expanduser("~/OneDrive/Desktop")),
     "documents": os.path.normpath(os.path.expanduser("~/Documents")),
     "downloads": os.path.normpath(os.path.expanduser("~/Downloads")),
 }
@@ -16,6 +19,9 @@ class CreateAction:
         os.makedirs(self.default_dir, exist_ok=True)
 
     def create_file(self):
+
+        logger.info("create_file action started")
+
         # 1. Get file name
         self.speaker.say("What is the name of the file?")
         with sr.Microphone() as mic:
@@ -23,7 +29,7 @@ class CreateAction:
 
         if not name:
             self.speaker.say("I didn't catch that")
-            return
+            return None
 
         # 2. Get location
         self.speaker.say("Where should I save it? Desktop, Documents, or Downloads?")
@@ -39,4 +45,9 @@ class CreateAction:
         with open(path, "w") as f:
             f.write("")
 
+        logger.info(f"File created at: {path}")    
         self.speaker.say(f"File {name} has been created in {location or 'the default folder'}!")
+
+
+    def create_floder(self):
+        pass     

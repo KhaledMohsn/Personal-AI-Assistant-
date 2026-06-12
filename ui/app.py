@@ -23,7 +23,7 @@ class AssistantUI:
     def __init__(self, user_name="Khaled", wake_word="vevo"):
         self.root = ctk.CTk()
         self.root.title("Vevo Assistant")
-        self.root.geometry("260x340")
+        self.root.geometry("280x460")
         self.root.resizable(False, False)
 
         # --- Outer rounded container ---
@@ -52,9 +52,9 @@ class AssistantUI:
             .pack(anchor="w", padx=14)
 
         self.log_frame = ctk.CTkScrollableFrame(
-            self.container, height=110, corner_radius=12, fg_color="#2a2a2a"
+            self.container, height=140, corner_radius=12, fg_color="#2a2a2a"
         )
-        self.log_frame.pack(fill="x", padx=12, pady=(4, 10))
+        self.log_frame.pack(fill="both", expand=True, padx=12, pady=(4, 10))
 
         # --- Settings row ---
         settings = ctk.CTkFrame(self.container, fg_color="transparent")
@@ -74,16 +74,25 @@ class AssistantUI:
         ctk.CTkLabel(user_box, text=user_name, font=("Segoe UI", 13, "bold"), text_color=TEXT)\
             .pack(anchor="w", padx=10, pady=(0, 8))
 
-    # --- State methods ---
+    # --- State methods (thread-safe via root.after) ---
     def set_active(self):
+        self.root.after(0, self._set_active)
+
+    def _set_active(self):
         self.label.configure(text_color=RED)
         self.status.configure(text="Listening...", text_color=RED)
 
     def set_idle(self):
+        self.root.after(0, self._set_idle)
+
+    def _set_idle(self):
         self.label.configure(text_color=TEXT)
         self.status.configure(text="Idle", text_color=SUBTEXT)
 
     def log_command(self, action: str, text: str):
+        self.root.after(0, self._add_log_entry, action, text)
+
+    def _add_log_entry(self, action: str, text: str):
         icon = ICONS.get(action, "•")
         timestamp = datetime.now().strftime("%H:%M")
 
@@ -96,20 +105,21 @@ class AssistantUI:
         )
         entry.pack(fill="x", padx=8, pady=2)
 
-        # Keep only the last 20 entries
         children = self.log_frame.winfo_children()
         if len(children) > 20:
             children[0].destroy()
+            children = self.log_frame.winfo_children()
 
         # Move the new entry to the top
-        entry.pack_configure(before=children[0] if children else None)
+        if len(children) > 1:
+            entry.pack_configure(before=children[0])
 
     def start(self, background_task):
         threading.Thread(target=background_task, daemon=True).start()
         self.root.mainloop()
 
     def destroy(self):
-        self.root.destroy()
+        self.root.after(0, self.root.destroy)
 
 
 if __name__ == "__main__":
@@ -121,7 +131,7 @@ if __name__ == "__main__":
     ui.root.mainloop()
 
 '''
-( More simple and readable )
+ minimal( More simple and readable ) 
 
 import tkinter as tk
 import threading

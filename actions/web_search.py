@@ -1,6 +1,9 @@
 import webbrowser
 import speech_recognition as sr
 import urllib.parse
+from config.logger import get_logger
+
+logger = get_logger(__name__)
 
 class  WebSearching:
     def __init__(self,speaker, listener):
@@ -9,6 +12,7 @@ class  WebSearching:
 
 
     def search(self, command:str):
+        logger.info(f"Web search: {command}")
 
         if not command:
             self.speaker.say("What do you want to search for?")

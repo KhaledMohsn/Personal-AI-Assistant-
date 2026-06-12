@@ -3,12 +3,16 @@ import asyncio
 import pygame
 import io
 
+from config.logger import get_logger
+logger = get_logger(__name__)
+
 class Speaker:
     def __init__(self, voice="en-US-AriaNeural"):
         self.voice = voice
         pygame.mixer.init()
 
     def say(self, text: str):
+        logger.debug(f"Speaking: {text}")
         asyncio.run(self._speak(text))
 
     async def _speak(self, text: str):
