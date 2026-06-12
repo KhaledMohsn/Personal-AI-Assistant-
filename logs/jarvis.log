@@ -1,0 +1,407 @@
+22:02:56 | INFO    | __main__        | Initializing Assistant
+22:03:03 | DEBUG   | voice.listener  | Could not understand audio
+22:03:08 | DEBUG   | voice.listener  | Recognized: vevo
+22:03:08 | DEBUG   | __main__        | Heard: vevo
+22:03:08 | INFO    | __main__        | Wake word detected
+22:03:08 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:03:08 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:03:18 | INFO    | __main__        | Command received: create new phone
+22:03:18 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-5265468d-14c0-4b19-81c9-318927bda4be', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'create new phone'}], 'model': 'llama-3.3-70b-versatile'}}
+22:03:18 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:03:18 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:03:18 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002100592FFE0>
+22:03:18 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x00000210046DEC50> server_hostname='api.groq.com' timeout=5.0
+22:03:18 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002100592FAA0>
+22:03:18 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:03:18 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:03:18 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:03:18 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:03:18 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:03:19 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:03:19 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'11676'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'1.62s'), (b'x-request-id', b'req_01ktykf7dset8r2wmyjp4fkym6'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=AN0xfurjHlw6iEIibA0E2Y9bCoijN3YT9u3HvuEYMbg-1781290999.211133-1.0.1.1-otKuVtpSyIsrhJKpCoy32g9McoAmUTLb7anP.y8YfJuKonJqdDAMHpaQV6mGCHlqMZgRxjFB9azUQFhgV.19T0GRXl4LUzH.YsuDkfnYWvi5ILXrh_HI2_0s0WKIn6u8; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:33:19 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab1d691f9148ba-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:03:19 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:03:19 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:03:19 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:03:19 | DEBUG   | httpcore.http11 | response_closed.started
+22:03:19 | DEBUG   | httpcore.http11 | response_closed.complete
+22:03:19 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:03:19 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '11676', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '1.62s', 'x-request-id': 'req_01ktykf7dset8r2wmyjp4fkym6', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=AN0xfurjHlw6iEIibA0E2Y9bCoijN3YT9u3HvuEYMbg-1781290999.211133-1.0.1.1-otKuVtpSyIsrhJKpCoy32g9McoAmUTLb7anP.y8YfJuKonJqdDAMHpaQV6mGCHlqMZgRxjFB9azUQFhgV.19T0GRXl4LUzH.YsuDkfnYWvi5ILXrh_HI2_0s0WKIn6u8; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:33:19 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab1d691f9148ba-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:03:19 | INFO    | __main__        | asking groq
+22:03:19 | DEBUG   | __main__        | Sending to Groq: create new phone
+22:03:19 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-ccaebba5-e66e-4fb1-9f4e-c221673227f4', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant named Mako.'}, {'role': 'user', 'content': 'create new phone'}], 'model': 'llama-3.3-70b-versatile'}}
+22:03:19 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:03:19 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:03:19 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:03:19 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:03:19 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:03:19 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:03:21 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:03:21 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'11651'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'1.745s'), (b'x-request-id', b'req_01ktykf7kje2a9fzbpf72m4akh'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab1d6a39b248ba-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:03:21 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:03:21 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:03:21 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:03:21 | DEBUG   | httpcore.http11 | response_closed.started
+22:03:21 | DEBUG   | httpcore.http11 | response_closed.complete
+22:03:21 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:03:21 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '11651', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '1.745s', 'x-request-id': 'req_01ktykf7kje2a9fzbpf72m4akh', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab1d6a39b248ba-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:03:21 | DEBUG   | voice.speaker   | Speaking: What an exciting task. I'd like to introduce the "Aurum" - a revolutionary new smartphone designed with cutting-edge technology and innovative features. Here's a detailed overview of the Aurum phone:
+
+**Design:**
+
+* The Aurum features a sleek, ergonomic design with a 6.7-inch AMOLED display, curved around the edges for a seamless user experience.
+* The phone's body is made of durable, high-quality materials, including a stainless steel frame and a toughened glass back panel.
+* The device is IP68-rated for water and dust resistance, ensuring it can withstand the rigors of daily use.
+
+**Display:**
+
+* The Aurum boasts a stunning 6.7-inch AMOLED display with a Quad HD+ resolution (1440 x 3200 pixels) and a 120Hz refresh rate.
+* The screen features a unique, adaptive color temperature system that adjusts to the surrounding environment, providing an immersive viewing experience.
+* The display also includes an advanced, in-screen fingerprint sensor for secure biometric authentication.
+
+**Performance:**
+
+* The Aurum is powered by a lightning-fast, next-generation processor (Qualcomm Snapdragon 8 Gen 2) with up to 16GB of RAM and 512GB of internal storage.
+* The device features a large, 5000mAh battery with advanced power management and quick charging capabilities (up to 100W wired, 30W wireless).
+* The Aurum also supports the latest 5G network standards, ensuring blazing-fast data speeds and low latency.
+
+**Camera:**
+
+* The Aurum features a quad-camera setup, consisting of:
+	+ A 50MP primary sensor with a wide-angle lens (f/1.7) and optical image stabilization.
+	+ A 12MP telephoto lens (f/2.4) with 3x optical zoom and 30x digital zoom.
+	+ A 16MP ultra-wide-angle lens (f/2.2) with a 120-degree field of view.
+	+ A dedicated time-of-flight camera for advanced depth sensing and augmented reality applications.
+* The camera system is powered by advanced AI algorithms, enabling features like enhanced portrait mode, night mode, and real-time object detection.
+
+**Software:**
+
+* The Aurum runs on the latest version of the Android operating system, with a clean, intuitive interface and regular security updates.
+* The device includes a range of exclusive software features, such as:
+	+ An AI-powered virtual assistant that learns your habits and provides personalized recommendations.
+	+ A built-in, AI-driven health and wellness app that tracks your physical activity, sleep, and nutrition.
+	+ A comprehensive suite of productivity tools, including a document editor, spreadsheet, and presentation software.
+
+**Additional Features:**
+
+* The Aurum includes a range of innovative features, such as:
+	+ Wireless charging with reverse charging capability.
+	+ Advanced facial recognition technology with 3D mapping and liveness detection.
+	+ A built-in, high-fidelity audio system with support for hi-res audio and Dolby Atmos.
+	+ A unique, always-on display that provides essential information, such as time, date, and notifications, without waking the device.
+
+**Colors:**
+
+* The Aurum will be available in four stunning color options:
+	+ Aurum (a luxurious, gold-inspired finish).
+	+ Midnight Blue (a deep, rich blue hue).
+	+ Cosmic Black (a sleek, space-inspired design).
+	+ Rose Gold (a elegant, rose-gold finish).
+
+**Pricing:**
+
+* The Aurum will be priced competitively, starting at $999 for the base model (8GB RAM, 128GB storage).
+* The top-of-the-line model (16GB RAM, 512GB storage) will retail for $1,299.
+
+The Aurum is an extraordinary smartphone that combines stunning design, cutting-edge technology, and innovative features to create a truly exceptional user experience. Whether you're a tech enthusiast, a creative professional, or simply someone who demands the best, the Aurum is the perfect choice.
+22:03:21 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:04:16 | INFO    | __main__        | Initializing Assistant
+22:04:22 | DEBUG   | voice.listener  | Recognized: vevo
+22:04:22 | DEBUG   | __main__        | Heard: vevo
+22:04:22 | INFO    | __main__        | Wake word detected
+22:04:22 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:04:22 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:04:30 | INFO    | __main__        | Command received: create a new file
+22:04:30 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-f2e0ca59-d0e4-4bc5-ae2a-e8af05dfe22f', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'create a new file'}], 'model': 'llama-3.3-70b-versatile'}}
+22:04:30 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:04:30 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:04:30 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001F3C525BB30>
+22:04:30 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x000001F3C5212AD0> server_hostname='api.groq.com' timeout=5.0
+22:04:30 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001F3C2C9FE60>
+22:04:30 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:04:30 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:04:30 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:04:30 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:04:30 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:04:30 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:04:30 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'997'), (b'x-ratelimit-remaining-tokens', b'11675'), (b'x-ratelimit-reset-requests', b'4m19.2s'), (b'x-ratelimit-reset-tokens', b'1.625s'), (b'x-request-id', b'req_01ktykhd9vfec8dc86axx70ny0'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=1PsdF49AeIcf9_Db2KnS2NvLlmwqIbMRvyAJkSCoaas-1781291070.7523327-1.0.1.1-D_oyOIq6ttHK5mHyc2ZQenV4Vhe51B2crZ3W9IxRAeVvXI8EGNnVbdyAzduR6Cp.GTiqZrH63K1eHbqr5szzWuO6dkY5ZUzwKQOACs2VLKlyHefqFo.30g65C.E1614o; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:34:30 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab1f283c588e3d-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:04:30 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:04:30 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:04:30 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:04:30 | DEBUG   | httpcore.http11 | response_closed.started
+22:04:30 | DEBUG   | httpcore.http11 | response_closed.complete
+22:04:30 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:04:30 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '997', 'x-ratelimit-remaining-tokens': '11675', 'x-ratelimit-reset-requests': '4m19.2s', 'x-ratelimit-reset-tokens': '1.625s', 'x-request-id': 'req_01ktykhd9vfec8dc86axx70ny0', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=1PsdF49AeIcf9_Db2KnS2NvLlmwqIbMRvyAJkSCoaas-1781291070.7523327-1.0.1.1-D_oyOIq6ttHK5mHyc2ZQenV4Vhe51B2crZ3W9IxRAeVvXI8EGNnVbdyAzduR6Cp.GTiqZrH63K1eHbqr5szzWuO6dkY5ZUzwKQOACs2VLKlyHefqFo.30g65C.E1614o; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:34:30 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab1f283c588e3d-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:04:30 | INFO    | __main__        | Triggering create_file action
+22:04:30 | INFO    | actions.create  | create_file action started
+22:04:30 | DEBUG   | voice.speaker   | Speaking: What is the name of the file?
+22:04:30 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:04:36 | DEBUG   | voice.speaker   | Speaking: Where should I save it? Desktop, Documents, or Downloads?
+22:04:36 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:04:44 | INFO    | actions.create  | File created at: C:\Users\khale\OneDrive\Desktop\kk.txt
+22:04:44 | DEBUG   | voice.speaker   | Speaking: File kk has been created in desktop!
+22:04:44 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:04:52 | DEBUG   | voice.listener  | Could not understand audio
+22:05:08 | DEBUG   | voice.listener  | Could not understand audio
+22:05:20 | DEBUG   | voice.listener  | Could not understand audio
+22:05:27 | DEBUG   | voice.listener  | Could not understand audio
+22:05:31 | DEBUG   | voice.listener  | Could not understand audio
+22:05:34 | DEBUG   | voice.listener  | Could not understand audio
+22:05:43 | DEBUG   | voice.listener  | Could not understand audio
+22:05:54 | DEBUG   | voice.listener  | Could not understand audio
+22:05:56 | DEBUG   | voice.listener  | Could not understand audio
+22:06:04 | DEBUG   | voice.listener  | Could not understand audio
+22:06:16 | DEBUG   | voice.listener  | Could not understand audio
+22:06:23 | DEBUG   | voice.listener  | Could not understand audio
+22:06:28 | DEBUG   | voice.listener  | Could not understand audio
+22:06:31 | DEBUG   | voice.listener  | Could not understand audio
+22:06:34 | DEBUG   | voice.listener  | Could not understand audio
+22:06:38 | DEBUG   | voice.listener  | Could not understand audio
+22:06:41 | DEBUG   | voice.listener  | Could not understand audio
+22:08:32 | INFO    | __main__        | Initializing Assistant
+22:08:39 | DEBUG   | voice.listener  | Could not understand audio
+22:08:42 | DEBUG   | voice.listener  | Recognized: a vevo
+22:08:42 | DEBUG   | __main__        | Heard: a vevo
+22:08:42 | INFO    | __main__        | Wake word detected
+22:08:42 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:08:42 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:08:48 | INFO    | __main__        | Command received: create a new
+22:08:48 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-c6414cb5-7dda-49f4-b045-b15eb45e39b2', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'create a new'}], 'model': 'llama-3.3-70b-versatile'}}
+22:08:48 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:08:48 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:08:48 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000023903CBFD10>
+22:08:48 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x0000023902A22AD0> server_hostname='api.groq.com' timeout=5.0
+22:08:48 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000023903CBFB60>
+22:08:48 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:08:48 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:08:48 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:08:48 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:08:48 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:08:49 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:08:49 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'11676'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'1.62s'), (b'x-request-id', b'req_01ktyks9s2ebabw3530bhjbvqw'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=AGBZVtUjN35GCqj2mEygHxsYOX3svMPEUw5pIwHPYLs-1781291329.294579-1.0.1.1-LxavR_ToOn4W7O3jz.T2Wtg8CskErz1sTWn.vkAPeSlEmrYuRAxUobdj4EvnqtbPIadFJ8p89o_gjsDiOsmHrkXLNyZgCD0ZjAhlail7dYUyVpKVi8l5ay9xwdhQqM6a; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:38:49 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab25781845e21d-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:08:49 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:08:49 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:08:49 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:08:49 | DEBUG   | httpcore.http11 | response_closed.started
+22:08:49 | DEBUG   | httpcore.http11 | response_closed.complete
+22:08:49 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:08:49 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '11676', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '1.62s', 'x-request-id': 'req_01ktyks9s2ebabw3530bhjbvqw', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=AGBZVtUjN35GCqj2mEygHxsYOX3svMPEUw5pIwHPYLs-1781291329.294579-1.0.1.1-LxavR_ToOn4W7O3jz.T2Wtg8CskErz1sTWn.vkAPeSlEmrYuRAxUobdj4EvnqtbPIadFJ8p89o_gjsDiOsmHrkXLNyZgCD0ZjAhlail7dYUyVpKVi8l5ay9xwdhQqM6a; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:38:49 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab25781845e21d-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:08:49 | INFO    | __main__        | Triggering create_file action
+22:08:49 | INFO    | actions.create  | create_file action started
+22:08:49 | DEBUG   | voice.speaker   | Speaking: What is the name of the file?
+22:08:49 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:08:55 | DEBUG   | voice.speaker   | Speaking: Where should I save it? Desktop, Documents, or Downloads?
+22:08:55 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:09:03 | INFO    | actions.create  | File created at: C:\Users\khale\OneDrive\Desktop\kk.txt
+22:09:03 | DEBUG   | voice.speaker   | Speaking: File kk has been created in desktop!
+22:09:03 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:09:11 | DEBUG   | voice.listener  | Could not understand audio
+22:09:18 | DEBUG   | voice.listener  | Could not understand audio
+22:09:22 | DEBUG   | voice.listener  | Could not understand audio
+22:09:25 | DEBUG   | voice.listener  | Could not understand audio
+22:09:31 | DEBUG   | voice.listener  | Could not understand audio
+22:09:35 | DEBUG   | voice.listener  | Could not understand audio
+22:09:40 | DEBUG   | voice.listener  | Could not understand audio
+22:09:43 | DEBUG   | voice.listener  | Could not understand audio
+22:09:46 | DEBUG   | voice.listener  | Could not understand audio
+22:09:50 | DEBUG   | voice.listener  | Could not understand audio
+22:09:53 | DEBUG   | voice.listener  | Could not understand audio
+22:09:57 | DEBUG   | voice.listener  | Could not understand audio
+22:10:00 | DEBUG   | voice.listener  | Could not understand audio
+22:10:04 | DEBUG   | voice.listener  | Could not understand audio
+22:10:07 | DEBUG   | voice.listener  | Could not understand audio
+22:10:10 | DEBUG   | voice.listener  | Could not understand audio
+22:10:13 | DEBUG   | voice.listener  | Could not understand audio
+22:10:16 | DEBUG   | voice.listener  | Could not understand audio
+22:10:19 | DEBUG   | voice.listener  | Could not understand audio
+22:10:31 | DEBUG   | voice.listener  | Could not understand audio
+22:10:35 | DEBUG   | voice.listener  | Could not understand audio
+22:10:42 | DEBUG   | voice.listener  | Could not understand audio
+22:10:47 | DEBUG   | voice.listener  | Could not understand audio
+22:10:55 | DEBUG   | voice.listener  | Could not understand audio
+22:10:58 | DEBUG   | voice.listener  | Could not understand audio
+22:11:01 | DEBUG   | voice.listener  | Could not understand audio
+22:11:04 | INFO    | __main__        | Initializing Assistant
+22:11:11 | DEBUG   | voice.listener  | Could not understand audio
+22:11:30 | INFO    | __main__        | Initializing Assistant
+22:11:33 | DEBUG   | voice.listener  | Could not understand audio
+22:11:37 | DEBUG   | voice.listener  | Could not understand audio
+22:12:56 | INFO    | __main__        | Initializing Assistant
+22:13:14 | INFO    | __main__        | Initializing Assistant
+22:13:19 | DEBUG   | voice.listener  | Could not understand audio
+22:13:21 | DEBUG   | voice.listener  | Could not understand audio
+22:13:26 | DEBUG   | voice.listener  | Could not understand audio
+22:13:31 | DEBUG   | voice.listener  | Could not understand audio
+22:13:36 | DEBUG   | voice.listener  | Could not understand audio
+22:13:41 | DEBUG   | voice.listener  | Could not understand audio
+22:13:45 | INFO    | __main__        | Initializing Assistant
+22:13:54 | DEBUG   | voice.listener  | Could not understand audio
+22:13:57 | DEBUG   | voice.listener  | Could not understand audio
+22:14:03 | INFO    | __main__        | Initializing Assistant
+22:14:06 | DEBUG   | voice.listener  | Could not understand audio
+22:14:12 | DEBUG   | voice.listener  | Could not understand audio
+22:14:16 | DEBUG   | voice.listener  | Could not understand audio
+22:14:19 | INFO    | __main__        | Initializing Assistant
+22:14:56 | INFO    | __main__        | Initializing Assistant
+22:15:04 | DEBUG   | voice.listener  | Could not understand audio
+22:15:11 | DEBUG   | voice.listener  | Could not understand audio
+22:15:17 | DEBUG   | voice.listener  | Could not understand audio
+22:15:21 | DEBUG   | voice.listener  | Could not understand audio
+22:15:26 | DEBUG   | voice.listener  | Could not understand audio
+22:15:30 | DEBUG   | voice.listener  | Recognized: vevo
+22:15:30 | DEBUG   | __main__        | Heard: vevo
+22:15:30 | INFO    | __main__        | Wake word detected
+22:15:30 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:15:30 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:15:36 | INFO    | __main__        | Command received: create a new file
+22:15:36 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-bb56f86a-4428-4891-ba8a-c9978a053071', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'create a new file'}], 'model': 'llama-3.3-70b-versatile'}}
+22:15:36 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:15:36 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:15:36 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FFF498470>
+22:15:36 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028F9FB72050> server_hostname='api.groq.com' timeout=5.0
+22:15:36 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FFD46FEC0>
+22:15:36 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:15:36 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:15:36 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:15:36 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:15:36 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:15:36 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:15:37 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'11675'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'1.625s'), (b'x-request-id', b'req_01ktym5r0denvaq3md745cd85c'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=SacHy8d.ck3fRvHxdW9ksPDRQTqwcsqsZ1Q..ToGRr8-1781291737.0797274-1.0.1.1-bp.GWCj1UH7TgT5cs_.nKKwKD1Orpg113zoQNwW92Pxtiezeq2jgCJ0XUIeD6iD8PLDrNS5cmZe_Yz7nLWvqwsdmp.qdVNnH9.XtWnicFNzReQ.QH.atDdjS91jg.7gy; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:45:37 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab2f6cb82db97c-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:15:36 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:15:36 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:15:36 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:15:36 | DEBUG   | httpcore.http11 | response_closed.started
+22:15:36 | DEBUG   | httpcore.http11 | response_closed.complete
+22:15:36 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:15:37 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '11675', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '1.625s', 'x-request-id': 'req_01ktym5r0denvaq3md745cd85c', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=SacHy8d.ck3fRvHxdW9ksPDRQTqwcsqsZ1Q..ToGRr8-1781291737.0797274-1.0.1.1-bp.GWCj1UH7TgT5cs_.nKKwKD1Orpg113zoQNwW92Pxtiezeq2jgCJ0XUIeD6iD8PLDrNS5cmZe_Yz7nLWvqwsdmp.qdVNnH9.XtWnicFNzReQ.QH.atDdjS91jg.7gy; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 12 Jun 2026 19:45:37 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab2f6cb82db97c-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:15:36 | INFO    | __main__        | Triggering create_file action
+22:15:36 | INFO    | actions.create  | create_file action started
+22:15:36 | DEBUG   | voice.speaker   | Speaking: What is the name of the file?
+22:15:36 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:15:43 | DEBUG   | voice.speaker   | Speaking: I didn't catch that
+22:15:43 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:15:54 | DEBUG   | voice.listener  | Could not understand audio
+22:15:56 | DEBUG   | voice.listener  | Could not understand audio
+22:16:01 | DEBUG   | voice.listener  | Recognized: hey vevo
+22:16:01 | DEBUG   | __main__        | Heard: hey vevo
+22:16:01 | INFO    | __main__        | Wake word detected
+22:16:01 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:16:01 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:16:08 | INFO    | __main__        | Command received: tell me a joke
+22:16:08 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-4321e7be-baee-4fb5-a1c3-144e2e6bf8ab', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'tell me a joke'}], 'model': 'llama-3.3-70b-versatile'}}
+22:16:08 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:16:08 | DEBUG   | httpcore.connection | close.started
+22:16:08 | DEBUG   | httpcore.connection | close.complete
+22:16:08 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:16:08 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FA0EB8620>
+22:16:08 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028F9FB72050> server_hostname='api.groq.com' timeout=5.0
+22:16:08 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FA0EB9160>
+22:16:08 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:16:08 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:16:08 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:16:08 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:16:08 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:16:08 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:16:09 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'11675'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'1.625s'), (b'x-request-id', b'req_01ktym6qbcfzvtpd5f11qfq8dh'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab303558c3e1fc-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:16:08 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:16:08 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:16:08 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:16:08 | DEBUG   | httpcore.http11 | response_closed.started
+22:16:08 | DEBUG   | httpcore.http11 | response_closed.complete
+22:16:08 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:16:09 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '11675', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '1.625s', 'x-request-id': 'req_01ktym6qbcfzvtpd5f11qfq8dh', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab303558c3e1fc-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:16:08 | INFO    | __main__        | asking groq
+22:16:08 | DEBUG   | __main__        | Sending to Groq: tell me a joke
+22:16:08 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-3c4e01d7-ca2a-4034-84da-55b8e7a94e87', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a helpful assistant named Mako.'}, {'role': 'user', 'content': 'tell me a joke'}], 'model': 'llama-3.3-70b-versatile'}}
+22:16:08 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:16:08 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:16:08 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:16:08 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:16:08 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:16:08 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:16:09 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:16:09 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'997'), (b'x-ratelimit-remaining-tokens', b'11633'), (b'x-ratelimit-reset-requests', b'4m19.2s'), (b'x-ratelimit-reset-tokens', b'1.835s'), (b'x-request-id', b'req_01ktym6qgxexw858z0kkce3v6b'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab30368bd5e1fc-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:16:09 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:16:09 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:16:09 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:16:09 | DEBUG   | httpcore.http11 | response_closed.started
+22:16:09 | DEBUG   | httpcore.http11 | response_closed.complete
+22:16:09 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:16:09 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '997', 'x-ratelimit-remaining-tokens': '11633', 'x-ratelimit-reset-requests': '4m19.2s', 'x-ratelimit-reset-tokens': '1.835s', 'x-request-id': 'req_01ktym6qgxexw858z0kkce3v6b', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab30368bd5e1fc-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:16:09 | DEBUG   | voice.speaker   | Speaking: Here's one: Why couldn't the bicycle stand up by itself?
+
+(wait for it...)
+
+Because it was two-tired!
+
+Hope that made you laugh. Do you want another one?
+22:16:09 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:16:30 | DEBUG   | voice.listener  | Could not understand audio
+22:16:33 | DEBUG   | voice.listener  | Could not understand audio
+22:16:37 | DEBUG   | voice.listener  | Could not understand audio
+22:16:40 | DEBUG   | voice.listener  | Recognized: vevo
+22:16:40 | DEBUG   | __main__        | Heard: vevo
+22:16:40 | INFO    | __main__        | Wake word detected
+22:16:40 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:16:40 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:16:47 | INFO    | __main__        | Command received: open notepad
+22:16:47 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-2875f6a9-edc3-4a5f-b9b4-7b7606950e3b', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'open notepad'}], 'model': 'llama-3.3-70b-versatile'}}
+22:16:47 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:16:47 | DEBUG   | httpcore.connection | close.started
+22:16:47 | DEBUG   | httpcore.connection | close.complete
+22:16:47 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:16:47 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FA0EFC860>
+22:16:47 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028F9FB72050> server_hostname='api.groq.com' timeout=5.0
+22:16:47 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FA0EFF050>
+22:16:47 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:16:47 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:16:47 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:16:47 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:16:47 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:16:47 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:16:48 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'996'), (b'x-ratelimit-remaining-tokens', b'11676'), (b'x-ratelimit-reset-requests', b'5m45.6s'), (b'x-ratelimit-reset-tokens', b'1.62s'), (b'x-request-id', b'req_01ktym7xa0fhjrz3r5dpad3rmr'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab31283da38ada-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:16:47 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:16:47 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:16:47 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:16:47 | DEBUG   | httpcore.http11 | response_closed.started
+22:16:47 | DEBUG   | httpcore.http11 | response_closed.complete
+22:16:47 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:16:48 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '996', 'x-ratelimit-remaining-tokens': '11676', 'x-ratelimit-reset-requests': '5m45.6s', 'x-ratelimit-reset-tokens': '1.62s', 'x-request-id': 'req_01ktym7xa0fhjrz3r5dpad3rmr', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab31283da38ada-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:16:47 | INFO    | __main__        | Triggering open_app: notepad
+22:16:47 | INFO    | actions.open_app | Attempting to open: notepad
+22:16:47 | INFO    | actions.open_app | Opened: notepad
+22:16:47 | DEBUG   | voice.speaker   | Speaking: Opening notepad
+22:16:47 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:16:54 | DEBUG   | voice.listener  | Could not understand audio
+22:16:57 | DEBUG   | voice.listener  | Could not understand audio
+22:17:05 | DEBUG   | voice.listener  | Could not understand audio
+22:17:08 | DEBUG   | voice.listener  | Could not understand audio
+22:17:13 | DEBUG   | voice.listener  | Could not understand audio
+22:17:22 | DEBUG   | voice.listener  | Could not understand audio
+22:17:26 | DEBUG   | voice.listener  | Could not understand audio
+22:17:32 | DEBUG   | voice.listener  | Could not understand audio
+22:17:38 | DEBUG   | voice.listener  | Could not understand audio
+22:17:41 | DEBUG   | voice.listener  | Could not understand audio
+22:17:44 | DEBUG   | voice.listener  | Could not understand audio
+22:17:47 | DEBUG   | voice.listener  | Could not understand audio
+22:17:55 | DEBUG   | voice.listener  | Recognized: a vevo
+22:17:55 | DEBUG   | __main__        | Heard: a vevo
+22:17:55 | INFO    | __main__        | Wake word detected
+22:17:55 | DEBUG   | voice.speaker   | Speaking: Yes khaled how can I help you?
+22:17:55 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:18:02 | INFO    | __main__        | Command received: search for cristiano
+22:18:02 | DEBUG   | groq._base_client | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-0514e929-0001-46b8-ba30-2e78d00f740f', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an intent classifier for a voice assistant.\nGiven a user command, respond ONLY with JSON in this exact format:\n{"action": "search" | "create_file" | "open_app" | "chat" | "exit", "query": "<cleaned text>"}\n\nRules:\n- "search": user wants to search the web. query = the search topic only.\n- "create_file": user wants to create a file.\n- "open_app": user wants to open an application. query = the app name only (e.g. "chrome", "notepad", "vscode").\n- "exit": user wants to stop/quit.\n- "chat": anything else. query = the original command.\n\nExamples:\n"search on cristiano ronaldo" -> {"action": "search", "query": "cristiano ronaldo"}\n"open chrome" -> {"action": "open_app", "query": "chrome"}\n"can you launch notepad" -> {"action": "open_app", "query": "notepad"}\n"make a new file" -> {"action": "create_file", "query": ""}\n"stop" -> {"action": "exit", "query": ""}\n"what is the capital of egypt" -> {"action": "chat", "query": "what is the capital of egypt"}\n\nRespond with ONLY the JSON, no extra text.'}, {'role': 'user', 'content': 'search for cristiano'}], 'model': 'llama-3.3-70b-versatile'}}
+22:18:02 | DEBUG   | groq._base_client | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+22:18:02 | DEBUG   | httpcore.connection | close.started
+22:18:02 | DEBUG   | httpcore.connection | close.complete
+22:18:02 | DEBUG   | httpcore.connection | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+22:18:02 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FA0EFEFC0>
+22:18:02 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028F9FB72050> server_hostname='api.groq.com' timeout=5.0
+22:18:02 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028FA0EFE420>
+22:18:02 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+22:18:02 | DEBUG   | httpcore.http11 | send_request_headers.complete
+22:18:02 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+22:18:02 | DEBUG   | httpcore.http11 | send_request_body.complete
+22:18:02 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+22:18:02 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 12 Jun 2026 19:18:02 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'995'), (b'x-ratelimit-remaining-tokens', b'11660'), (b'x-ratelimit-reset-requests', b'7m12s'), (b'x-ratelimit-reset-tokens', b'1.7s'), (b'x-request-id', b'req_01ktyma648emrrcvcgv3ja84tq'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a0ab32fa5e4ac26f-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+22:18:02 | INFO    | httpx           | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+22:18:02 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+22:18:02 | DEBUG   | httpcore.http11 | receive_response_body.complete
+22:18:02 | DEBUG   | httpcore.http11 | response_closed.started
+22:18:02 | DEBUG   | httpcore.http11 | response_closed.complete
+22:18:02 | DEBUG   | groq._base_client | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 12 Jun 2026 19:18:02 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '995', 'x-ratelimit-remaining-tokens': '11660', 'x-ratelimit-reset-requests': '7m12s', 'x-ratelimit-reset-tokens': '1.7s', 'x-request-id': 'req_01ktyma648emrrcvcgv3ja84tq', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a0ab32fa5e4ac26f-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+22:18:02 | INFO    | __main__        | Triggering search: cristiano
+22:18:02 | INFO    | actions.web_search | Web search: cristiano
+22:18:02 | DEBUG   | voice.speaker   | Speaking: Searching for cristiano
+22:18:02 | DEBUG   | asyncio         | Using proactor: IocpProactor
+22:18:10 | DEBUG   | voice.listener  | Could not understand audio
+22:18:21 | DEBUG   | voice.listener  | Could not understand audio
+22:18:23 | DEBUG   | voice.listener  | Could not understand audio
+22:18:27 | DEBUG   | voice.listener  | Could not understand audio
+22:18:39 | DEBUG   | voice.listener  | Could not understand audio
+22:18:42 | DEBUG   | voice.listener  | Could not understand audio
+22:18:51 | DEBUG   | voice.listener  | Could not understand audio
+22:18:57 | DEBUG   | voice.listener  | Could not understand audio

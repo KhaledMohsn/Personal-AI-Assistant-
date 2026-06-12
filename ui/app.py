@@ -23,7 +23,7 @@ class AssistantUI:
     def __init__(self, user_name="Khaled", wake_word="vevo"):
         self.root = ctk.CTk()
         self.root.title("Vevo Assistant")
-        self.root.geometry("280x460")
+        self.root.geometry("220x335")
         self.root.resizable(False, False)
 
         # --- Outer rounded container ---
@@ -60,19 +60,6 @@ class AssistantUI:
         settings = ctk.CTkFrame(self.container, fg_color="transparent")
         settings.pack(fill="x", padx=12, pady=(0, 12))
 
-        wake_box = ctk.CTkFrame(settings, corner_radius=12, fg_color="#2a2a2a")
-        wake_box.pack(side="left", expand=True, fill="x", padx=(0, 6))
-        ctk.CTkLabel(wake_box, text="Wake word", font=("Segoe UI", 9), text_color=SUBTEXT)\
-            .pack(anchor="w", padx=10, pady=(8, 0))
-        ctk.CTkLabel(wake_box, text=wake_word, font=("Segoe UI", 13, "bold"), text_color=TEXT)\
-            .pack(anchor="w", padx=10, pady=(0, 8))
-
-        user_box = ctk.CTkFrame(settings, corner_radius=12, fg_color="#2a2a2a")
-        user_box.pack(side="left", expand=True, fill="x", padx=(6, 0))
-        ctk.CTkLabel(user_box, text="User", font=("Segoe UI", 9), text_color=SUBTEXT)\
-            .pack(anchor="w", padx=10, pady=(8, 0))
-        ctk.CTkLabel(user_box, text=user_name, font=("Segoe UI", 13, "bold"), text_color=TEXT)\
-            .pack(anchor="w", padx=10, pady=(0, 8))
 
     # --- State methods (thread-safe via root.after) ---
     def set_active(self):
