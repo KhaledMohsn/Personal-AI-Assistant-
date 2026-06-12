@@ -19,7 +19,7 @@ Vevo AI Assistant is a Windows desktop AI assistant that lives silently in your 
 ---
 ---
 
-<img width="1918" height="1015" alt="Screenshot 2026-06-09 232325" src="https://github.com/user-attachments/assets/438919cd-c75e-46b7-9f72-e1ef86d3dc23" />
+
 
 ---
 ## Features
