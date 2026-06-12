@@ -76,6 +76,7 @@ class Assistant:
                     intent = get_intent(self.client, GROQ_MODEL, command)
                     action = intent["action"]
                     query = intent["query"]
+                    self.ui.log_command(action, command)
 
                     if action == "exit":
                         logger.info("Triggering exit")
@@ -86,7 +87,7 @@ class Assistant:
                         logger.info(f"Triggering search: {query}")
                         self.web_search.search(query)
 
-                    if action == "create_file":
+                    elif action == "create_file":
                         logger.info("Triggering create_file action")
                         self.actions.create_file()   
 
