@@ -17,6 +17,9 @@
 Vevo AI Assistant is a Windows desktop AI assistant that lives silently in your system tray and wakes up instantly when you call it — just like Siri, but on your PC. Say **"Vevo"** or press **Ctrl+Space** → a sleek popup appears → type or speak your command → Vevo responds and acts.
 
 ---
+
+<img width="1918" height="1015" alt="Screenshot 2026-06-12 221854" src="https://github.com/user-attachments/assets/0722227d-d87e-44cd-b885-95b6faf54d03" />
+
 ---
 
 
